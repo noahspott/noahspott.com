@@ -1,0 +1,118 @@
+---
+import type { SiteInfo } from "./Header.types";
+import Content from "./Content.astro";
+import { FaEnvelope, FaPhone, FaLocationDot } from "react-icons/fa6";
+import Socials from "./Socials.astro";
+
+interface FooterProps {
+  siteInfo: SiteInfo;
+}
+
+const currentYear = new Date().getFullYear();
+
+const { siteInfo } = Astro.props as FooterProps;
+---
+
+<footer class="bg- relative z-40 text-white">
+  <div class="py-20">
+    <Content>
+      <div class="flex flex-col gap-16">
+        <!-- TOP -->
+        <div class="flex flex-col justify-between gap-16 md:flex-row">
+          <!-- COL 1 -->
+          <div class="flex max-w-sm flex-col gap-4">
+            {
+              siteInfo.logo ? (
+                <img
+                  class="max-w-52"
+                  src={siteInfo.logo}
+                  alt={`${siteInfo.name} logo`}
+                />
+              ) : (
+                <h2 class="text-xl font-semibold">{siteInfo.name}</h2>
+              )
+            }
+            <p class="text-lg">
+              {siteInfo.description}
+            </p>
+            <Socials siteInfo={siteInfo} />
+          </div>
+
+          <!-- COL 2 -->
+          <!-- <div class="flex flex-col gap-4">
+            <h2 class="text-xl font-bold">Navigate</h2>
+            <ul class="flex flex-col items-start gap-4">
+              {
+                siteInfo.menu.map((menuItem) => {
+                  return (
+                    <li class="transition duration-300 hover:underline">
+                      <a href={menuItem.href}>{menuItem.display}</a>
+                    </li>
+                  );
+                })
+              }
+            </ul>
+          </div> -->
+
+          <!-- COL 3 -->
+          <div class="flex flex-col gap-4">
+            <h2 class="text-xl font-bold">Contact</h2>
+            <ul class="flex flex-col gap-4">
+              {
+                siteInfo.phone && (
+                  <li class="flex items-center gap-2 self-start duration-100 hover:text-primary-200">
+                    <FaPhone />
+                    <a
+                      aria-label="Call the Janet Jackson for Judge team."
+                      href={`tel:${siteInfo.phone}`}
+                    >
+                      {siteInfo.phone}
+                    </a>
+                  </li>
+                )
+              }
+              {
+                siteInfo.email && (
+                  <li class="flex items-center gap-2 self-start duration-100 hover:text-primary-200">
+                    <FaEnvelope />
+
+                    <a
+                      aria-label="Email the Janet Jackson for Judge team."
+                      href={`mailto:${siteInfo.email}`}
+                    >
+                      {siteInfo.email}
+                    </a>
+                  </li>
+                )
+              }
+              {
+                siteInfo.location && (
+                  <li class="flex items-center gap-2">
+                    <FaLocationDot />
+                    <p>{siteInfo.location}</p>
+                  </li>
+                )
+              }
+            </ul>
+          </div>
+        </div>
+
+        <hr />
+
+        <!-- BOTTOM -->
+        <div
+          class="flex flex-col justify-between gap-4 text-xs md:flex-row lg:text-sm"
+        >
+          <p>{`© ${currentYear}. All Rights Reserved.`}</p>
+          <!-- <p>
+            Web Design & Development by <a
+              class="font-medium"
+              href="https://summitavenueweb.com/">Summit Avenue Web Solutions</a
+            >
+          </p> -->
+          <!-- <p>Paid for by Janet Jackson for Judge</p> -->
+        </div>
+      </div>
+    </Content>
+  </div>
+</footer>

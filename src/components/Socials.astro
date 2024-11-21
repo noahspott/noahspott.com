@@ -1,0 +1,72 @@
+---
+import { getUrlFromPlatform } from "../utils/utils";
+import {
+  FaFacebook,
+  FaGoogle,
+  FaXTwitter,
+  FaInstagram,
+  FaGithub,
+  FaLinkedin,
+} from "react-icons/fa6";
+import type { SiteInfo } from "./Header.types";
+
+type SocialsProps = {
+  siteInfo: SiteInfo;
+  iconClasses?: string;
+  containerClasses?: string;
+};
+
+const { siteInfo, iconClasses, containerClasses } = Astro.props as SocialsProps;
+---
+
+{
+  siteInfo.socials && (
+    <div class={`flex gap-4 ${containerClasses}`}>
+      {getUrlFromPlatform("facebook", siteInfo.socials) && (
+        <a
+          aria-label={`Visit the ${siteInfo.name} Facebook Page`}
+          href={getUrlFromPlatform("facebook", siteInfo.socials)}
+          class={`text-3xl duration-100 hover:cursor-pointer hover:opacity-70 ${iconClasses}`}
+        >
+          <FaFacebook />
+        </a>
+      )}
+      {getUrlFromPlatform("twitter", siteInfo.socials) && (
+        <a
+          aria-label={`Visit the ${siteInfo.name} X Account`}
+          href={getUrlFromPlatform("x", siteInfo.socials)}
+          class={`text-3xl duration-100 hover:cursor-pointer hover:opacity-70 ${iconClasses}`}
+        >
+          <FaXTwitter />
+        </a>
+      )}
+      {getUrlFromPlatform("instagram", siteInfo.socials) && (
+        <a
+          aria-label={`Visit the ${siteInfo.name} Instagram Page`}
+          href={getUrlFromPlatform("instagram", siteInfo.socials)}
+          class={`text-3xl duration-100 hover:cursor-pointer hover:opacity-70 ${iconClasses}`}
+        >
+          <FaInstagram />
+        </a>
+      )}
+      {getUrlFromPlatform("github", siteInfo.socials) && (
+        <a
+          aria-label={`Visit the ${siteInfo.name} Github Page`}
+          href={getUrlFromPlatform("github", siteInfo.socials)}
+          class={`text-3xl duration-100 hover:cursor-pointer hover:opacity-70 ${iconClasses}`}
+        >
+          <FaGithub />
+        </a>
+      )}
+      {getUrlFromPlatform("linkedin", siteInfo.socials) && (
+        <a
+          aria-label={`Visit the ${siteInfo.name} Linkedin Page`}
+          href={getUrlFromPlatform("linkedin", siteInfo.socials)}
+          class={`text-3xl duration-100 hover:cursor-pointer hover:opacity-70 ${iconClasses}`}
+        >
+          <FaLinkedin />
+        </a>
+      )}
+    </div>
+  )
+}

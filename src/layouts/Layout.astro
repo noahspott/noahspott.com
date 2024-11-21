@@ -1,50 +1,119 @@
 ---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Button from "../components/Button.astro";
+import NavPusher from "../components/NavPusher.astro";
+
 interface Props {
-	title: string;
+  title: string;
+  description: string;
 }
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
+
+const siteName = "Noah Spott";
+
+const signatureLight = "/signature-light.png";
+const signatureDark = "/signature-dark.png";
+
+const siteInfo = {
+  name: siteName,
+  logo: signatureDark,
+  phone: "+1 (570) 243-1651",
+  email: "noahspottdev@gmail.com",
+  location: "Pocono Summit, PA",
+  description:
+    "Noah Spott is a web developer from the Poconos with a passion for continuous learning and cultivating quality relationships.",
+  menu: [
+    {
+      display: "Home",
+      href: "/",
+    },
+    // {
+    //   display: "About",
+    //   href: `/about-${siteName.replace(/\s+/g, "-").toLowerCase()}`,
+    // },
+    // {
+    //   display: "Endorsements",
+    //   href: `/endorsements`,
+    // },
+    // {
+    //   display: "Get Involved",
+    //   href: "/get-involved",
+    // },
+  ],
+  socials: [
+    {
+      platform: "github",
+      url: "https://github.com/noahspott",
+    },
+    {
+      platform: "linkedin",
+      url: "https://linkedin.com/in/noahspott",
+    },
+  ],
+};
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="min-w-80 bg-primary-700">
+    <Header
+      siteInfo={siteInfo}
+      nameStyles="font-semibold text-md sm:text-lg text-primary-500"
+      menuItemStyles="text-lg text-dark-1"
+      hasContactHeader={false}
+      contactHeaderStyles="text-sm bg-primary-700 text-primary-50"
+      containerStyles="bg-white shadow-md"
+      hasSocialNav={true}
+    >
+      <!-- <Button
+        slot="ctaButton"
+        href="/donate"
+        label="Donate"
+        styles="text-white duration-200 bg-primary-500 hover:bg-accent-500"
+      /> -->
+    </Header>
+    <NavPusher />
+    <slot />
+    <Footer siteInfo={{ ...siteInfo, logo: signatureLight }} />
+  </body>
 </html>
 <style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
+  :root {
+  }
+  html {
+    font-family: system-ui, sans-serif;
+    background-color: "#011C3B";
+    min-width: 320px;
+    max-width: 1920px;
+    overscroll-behavior: none;
+    margin: 0 auto;
+  }
+  code {
+    font-family:
+      Playfair Display,
+      Menlo,
+      Monaco,
+      Lucida Console,
+      Liberation Mono,
+      DejaVu Sans Mono,
+      Bitstream Vera Sans Mono,
+      Courier New,
+      monospace;
+  }
 </style>

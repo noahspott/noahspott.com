@@ -1,0 +1,129 @@
+---
+/**
+ * Header Component
+ *
+ * This component renders a website header with two parts:
+ * 1. **Contact Header** (Optional) - Displays the contact details (phone and email) with icons.
+ * 2. **Navigation Header** - Displays a logo/name and a list of menu items with a space for a CTA button.
+ *
+ */
+
+import { Image } from "astro:assets";
+import Content from "../components/Content.astro";
+import MenuButton from "./MenuButton";
+import { FaEnvelope, FaPhone } from "react-icons/fa6";
+
+import type { HeaderProps } from "./Header.types";
+import Socials from "./Socials.astro";
+
+const {
+  nameStyles = "",
+  siteInfo,
+  menuItemStyles = "",
+
+  hasContactHeader = false,
+  contactHeaderStyles = "",
+
+  containerStyles = "",
+
+  hasSocialNav = false,
+} = Astro.props as HeaderProps;
+---
+
+<header class={`flex flex-col ${containerStyles} z-50 fixed w-full`}>
+  <!-- CONTACT HEADER -->
+  {
+    hasContactHeader && (
+      <div class={`${contactHeaderStyles}`}>
+        <Content>
+          <div class="flex items-center justify-end gap-10 py-4">
+            <div class="hidden items-center gap-2 sm:flex">
+              <FaEnvelope />
+              <a
+                href={`mailto:${siteInfo.email}`}
+                aria-label="Email the Janet Jackson for Judge team."
+              >
+                {siteInfo.email}
+              </a>
+            </div>
+            <div class="flex items-center gap-2">
+              <FaPhone />
+              <a
+                href={`tel:${siteInfo.phone}`}
+                aria-label="Call the Janet Jackson for Judge team."
+              >
+                {siteInfo.phone}
+              </a>
+            </div>
+          </div>
+        </Content>
+      </div>
+    )
+  }
+
+  <!-- NAV HEADER -->
+  <div class="py-7">
+    <Content>
+      <nav class="flex items-center justify-between">
+        <a
+          href="/"
+          aria-label="Navigate to home page"
+          class={`${nameStyles} duration-100 hover:scale-[1.02] max-w-32 sm:max-w-52`}
+          >{
+            siteInfo.logo ? (
+              <img
+                src={siteInfo.logo}
+                alt={`${siteInfo.name} Logo`}
+                loading="eager"
+              />
+            ) : (
+              siteInfo.name
+            )
+          }</a
+        >
+
+        <ul class="flex items-center gap-10">
+          {
+            hasSocialNav && siteInfo.socials ? (
+              <Socials
+                siteInfo={siteInfo}
+                iconClasses="text-primary-500"
+                containerClasses="gap-10"
+              />
+            ) : (
+              siteInfo.menu.map((item, index) => {
+                if (item.display.toLowerCase() !== "home") {
+                  return (
+                    <li
+                      class:list={[
+                        "hidden",
+                        { "md:flex": index < 3 },
+                        { "lg:flex": index >= 3 },
+                      ]}
+                    >
+                      <a
+                        aria-label={`Go to the ${item.display} page`}
+                        class={`${menuItemStyles} transition-all duration-100 hover:text-primary-500`}
+                        href={item.href}
+                      >
+                        {item.display}
+                      </a>
+                    </li>
+                  );
+                }
+              })
+            )
+          }
+          <!-- <li class="flex">
+            <slot name="ctaButton" />
+          </li> -->
+          <!-- <div class="flex md:hidden">
+            <MenuButton client:load menu={menu} />
+          </div> -->
+        </ul>
+      </nav>
+    </Content>
+  </div>
+</header>
+
+<script></script>
