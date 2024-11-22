@@ -30,6 +30,9 @@ export default {
         xs: "400px",
       },
       colors: {
+        spotify: {
+          500: "#1DB954",
+        },
         primary: {
           50: "#E6EAEF",
           100: "#CCD5E0",

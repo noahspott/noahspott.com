@@ -6,6 +6,7 @@ import {
   getAlbumName,
   getArtistName,
 } from "../utils/spotifyUtils";
+import { FaSpotify } from "react-icons/fa6";
 import type { Album } from "../types/spotifyTypes";
 
 export default function LatestSpotifyRelease() {
@@ -60,16 +61,17 @@ export default function LatestSpotifyRelease() {
           )}
         </div>
         {isFetched && (
-          <p className="animate-fadeIn">
+          <p className="animate-fadeIn text-center text-xs uppercase tracking-wider">
             {getAlbumName(latestAlbum)} - {getArtistName(latestAlbum)}
           </p>
         )}
         {!isFetched && (
           <button
             onClick={handleButtonClick}
-            className={`text-dark-2 bg-white p-4 font-black uppercase duration-100 hover:opacity-70 disabled:line-through disabled:opacity-50 disabled:hover:scale-100 ${isFetching && "animate-pulse"} `}
+            className={`bg-spotify-500 flex items-center justify-center gap-4 p-4 font-black uppercase tracking-wider text-white duration-100 hover:opacity-70 disabled:line-through disabled:opacity-50 disabled:hover:scale-100 ${isFetching && "animate-pulse"} `}
           >
             {getButtonMessage(isFetching, isFetched)}
+            <FaSpotify />
           </button>
         )}
         <p className={`${isFetched && "animate-fadeIn"}`}>
