@@ -1,51 +1,12 @@
 ---
-import Image from "astro/components/Image.astro";
-
+import HeroSection from "../components/sections/HeroSection.astro";
+import NewReleaseSection from "../components/sections/NewReleaseSection.astro";
 import Layout from "../layouts/Layout.astro";
-import Content from "../components/Content.astro";
-
-import noahPhoto from "../images/noah-headshot-cropped.jpg";
-
-const skills = ["React", "Typescript", "Astro"];
 ---
 
 <Layout title="Noah Spott | Software Engineer" description="">
   <main>
-    <section class="bg-white py-20">
-      <Content>
-        <div
-          class="grid grid-cols-1 place-items-center gap-16 sm:grid-cols-2 md:gap-4"
-        >
-          <div class="order-last sm:order-first">
-            <h1
-              class="mb-8 font-mono text-4xl font-black text-dark-2 md:text-7xl"
-            >
-              TECH SKILLS
-            </h1>
-            <ul class="flex flex-col gap-4 font-mono">
-              <li>
-                <span class="text-lg font-bold">Frontend:</span>
-                <p>React, JavaScript, Typescript, HTML, CSS, Tailwind</p>
-              </li>
-              <li>
-                <span class="text-lg font-bold">Backend:</span>
-                <p>Node.js, Python, Flask, REST, CRUD</p>
-              </li>
-              <li>
-                <span class="text-lg font-bold">Fullstack:</span>
-                <p>Next.js, Astro</p>
-              </li>
-            </ul>
-          </div>
-          <div class="max-w-md">
-            <Image
-              src={noahPhoto}
-              alt="Image of Noah Spott"
-              class="rounded-full shadow-2xl"
-            />
-          </div>
-        </div>
-      </Content>
-    </section>
+    <HeroSection />
+    <NewReleaseSection />
   </main>
 </Layout>

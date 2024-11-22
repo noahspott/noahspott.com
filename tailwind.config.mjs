@@ -12,11 +12,16 @@ export default {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-15px)" },
         },
+        fadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
       },
       animation: {
         "float-slow": "floatSlow 6s ease-in-out infinite",
         "float-fast": "floatFast 5s ease-in-out infinite",
         "pulse-fast": "pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        fadeIn: "fadeIn 1s ease-in-out",
       },
       fontFamily: {
         serif: ["Source-Serif-Pro"],

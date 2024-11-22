@@ -1,0 +1,20 @@
+---
+import Content from "../Content.astro";
+import LatestSpotifyRelease from "../LatestSpotifyRelease";
+---
+
+<section class="bg-dark-2 py-20 font-mono text-white">
+  <Content>
+    <div
+      class="grid grid-cols-1 place-items-center gap-16 sm:grid-cols-2 md:gap-4"
+    >
+      <div class="order-last sm:order-first">
+        <LatestSpotifyRelease client:load />
+      </div>
+      <div class="flex flex-col gap-8">
+        <h2 class="text-4xl font-black md:text-7xl">FOR FUN</h2>
+        <p>I like to make music.</p>
+      </div>
+    </div>
+  </Content>
+</section>
