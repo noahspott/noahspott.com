@@ -20,7 +20,7 @@ export default function LatestSpotifyRelease() {
     } else if (isFetched) {
       return "LISTEN ON SPOTIFY";
     } else {
-      return "CLICK HERE";
+      return "CALL SPOTIFY API";
     }
   }
 
@@ -32,7 +32,7 @@ export default function LatestSpotifyRelease() {
       </>
     ) : (
       <>
-        to grab my latest music release from the{" "}
+        to display my latest music release from the{" "}
         <span className="font-bold">Spotify Web API</span>.
       </>
     );
@@ -68,7 +68,7 @@ export default function LatestSpotifyRelease() {
         {!isFetched && (
           <button
             onClick={handleButtonClick}
-            className={`bg-spotify-500 flex items-center justify-center gap-4 p-4 font-black uppercase tracking-wider text-white duration-100 hover:opacity-70 disabled:line-through disabled:opacity-50 disabled:hover:scale-100 ${isFetching && "animate-pulse"} `}
+            className={`flex items-center justify-center gap-4 bg-spotify-500 p-4 font-black uppercase tracking-wider text-white duration-100 hover:opacity-70 disabled:line-through disabled:opacity-50 disabled:hover:scale-100 ${isFetching && "animate-pulse"} `}
           >
             {getButtonMessage(isFetching, isFetched)}
             <FaSpotify />
