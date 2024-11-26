@@ -32,7 +32,7 @@ export default function LatestSpotifyRelease() {
       </>
     ) : (
       <>
-        to display my latest music release from the{" "}
+        Click the button above to display my latest music release from the{" "}
         <span className="font-bold">Spotify Web API</span>.
       </>
     );
