@@ -1,0 +1,115 @@
+---
+import Content from "../Content.astro";
+import { Image } from "astro:assets";
+import {
+  FaArrowAltCircleRight,
+  FaRegArrowAltCircleRight,
+  FaArrowCircleRight,
+  FaArrowRight,
+  FaLongArrowAltRight,
+} from "react-icons/fa";
+
+import cash from "../../images/cash-website.png";
+import sal from "../../images/sal-website.png";
+import jacksonlaw from "../../images/jacksonlaw-website.png";
+import proxybuilders from "../../images/proxybuilders-website.png";
+import summitave from "../../images/summitave-website.png";
+import judgejackson from "../../images/judgejackson-website.png";
+
+const portfolioItems = [
+  {
+    title: "Cash for Diabetic Strips",
+    description:
+      "Cash for Diabetic Strips wanted to streamline their business process by allowing their clients to generate prepaid shipping labels. I designed and developed this Astro web app to accept a form, update a Google Sheets database, and generate a shipping label using the Stamps.com REST API.",
+    tools: [
+      "TypeScript",
+      "REST API (Stamps.com)",
+      "Google Sheets API",
+      "React w/ Astro",
+      "Netlify",
+      "Figma",
+    ],
+    src: cash,
+    href: "https://cashfordiabeticstrips.netlify.app",
+  },
+  {
+    title: "Sal.news",
+    description:
+      "Philadelphia musician, Sal Tommassello wanted a website for his fans to easily view his performance schedule and music. I designed and developed this site using Next.js and the Google Calendar API to provide an easy way for Sal to update and share his schedule.",
+    tools: [
+      "React w/ Next.js",
+      "Google Calendar API",
+      "Custom CSS",
+      "Netlify",
+      "Figma",
+    ],
+    src: sal,
+    href: "https://sal.news",
+  },
+  {
+    title: "JacksonLaw",
+    description:
+      "Jackson Law is a law firm serving Monroe County and the Poconos. I designed and developed this page using Next.js as a Static Site Generator.",
+    tools: ["React w/ Next.js", "Tailwind", "Netlify", "Figma"],
+    src: jacksonlaw,
+    href: "https://jacksonlawpractice.com",
+  },
+  {
+    title: "Proxy Builders LLC",
+    description:
+      "Proxy Builders is a residential construction company in Central PA. I designed and developed this website using Astro, Tailwind, and Netlify.",
+    tools: ["React w/ Astro", "Tailwind", "Netlify", "Figma"],
+    src: proxybuilders,
+    href: "https://proxybuildersllc.com",
+  },
+  {
+    title: "Summit Avenue Web Solutions",
+    description:
+      "Summit Avenue Web Solutions is a web design and development company focusing on delivering web solutions for small businesses across the US. I designed and developed this website using Astro, Tailwind, and Netlify.",
+    tools: ["React w/ Astro", "Tailwind", "Netlify", "Figma"],
+    src: summitave,
+    href: "https://summitavenueweb.com",
+  },
+  {
+    title: "Janet Jackson for Judge",
+    description:
+      "Attorney Janet Jackson needed a custom website for her election campaign. I designed and developed this website using Astro, Tailwind, and Netlify.",
+    tools: ["React w/ Astro", "Tailwind", "Netlify", "Figma"],
+    src: judgejackson,
+    href: "https://janetjacksonforjudge.com",
+  },
+];
+---
+
+<section class="bg-white py-20 font-mono text-dark-2">
+  <Content>
+    <h2 class="text-4xl font-black md:text-7xl">PORTFOLIO</h2>
+    <ul class="my-8 flex flex-wrap justify-center gap-4 font-sans">
+      {
+        portfolioItems.map((item) => {
+          return (
+            <li>
+              <a
+                href={item.href}
+                class="relative flex h-full max-w-96 flex-col gap-4 rounded-md border-b-2 border-dark-3 bg-gradient-to-br from-white to-slate-50 px-2 py-4 duration-100 hover:scale-[102%] hover:from-slate-50 hover:to-slate-100 hover:text-dark-1 hover:shadow-md md:px-4 md:py-8"
+              >
+                <h3 class="text-2xl font-semibold">{item.title}</h3>
+                <Image src={item.src} alt={`Image of ${item.title}`} />
+                <div>
+                  <h4 class="font-semibold">Tools:</h4>
+                  <ul class="list list-inside list-disc">
+                    {item.tools.map((tool) => {
+                      return <li>{tool}</li>;
+                    })}
+                  </ul>
+                </div>
+                <p class="font-sans">{item.description}</p>
+                <FaArrowRight className="mt-auto self-end bottom-4 md:bottom-8 text-2xl text-dark-1 hover:text-primary-500" />
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </Content>
+</section>

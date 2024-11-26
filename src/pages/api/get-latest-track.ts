@@ -8,7 +8,6 @@ export const GET: APIRoute = async (request) => {
 
   try {
     const accessToken = await getAccessToken();
-    // console.log("accessToken", accessToken);
 
     const [latestTrack] = await getAlbums(ARTIST_ID, accessToken, 1);
 
