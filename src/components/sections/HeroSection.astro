@@ -3,6 +3,21 @@ import Content from "../Content.astro";
 import { Image } from "astro:assets";
 
 import noahPhoto from "../../images/noah-headshot-cropped.jpg";
+
+const techSkills = [
+  {
+    type: "Frontend",
+    skills: ["React", "JavaScript", "Typescript", "HTML", "CSS", "Tailwind"],
+  },
+  {
+    type: "Backend",
+    skills: ["Node.js", "Python", "Flask", "REST", "CRUD"],
+  },
+  {
+    type: "Fullstack",
+    skills: ["Next.js", "Astro"],
+  },
+];
 ---
 
 <section class="bg-white py-20">
@@ -11,22 +26,36 @@ import noahPhoto from "../../images/noah-headshot-cropped.jpg";
       class="grid grid-cols-1 place-items-center gap-16 sm:grid-cols-2 md:gap-4"
     >
       <div class="order-last sm:order-first">
-        <h1 class="mb-8 font-mono text-4xl font-black text-dark-2 md:text-7xl">
-          TECH SKILLS
+        <h1
+          class="mb-2 bg-gradient-to-r from-primary-500 via-primary-400 to-primary-600 bg-clip-text font-mono text-4xl font-black text-transparent md:text-7xl"
+        >
+          Noah Spott
         </h1>
-        <ul class="flex flex-col gap-4 font-mono">
-          <li>
-            <span class="text-lg font-bold">Frontend:</span>
-            <p>React, JavaScript, Typescript, HTML, CSS, Tailwind</p>
-          </li>
-          <li>
-            <span class="text-lg font-bold">Backend:</span>
-            <p>Node.js, Python, Flask, REST, CRUD</p>
-          </li>
-          <li>
-            <span class="text-lg font-bold">Fullstack:</span>
-            <p>Next.js, Astro</p>
-          </li>
+        <p class="mb-8 font-mono text-2xl uppercase tracking-wider text-dark-3">
+          Web Developer
+        </p>
+        <h2 class="mb-2 font-mono text-2xl font-black">Tech Skills</h2>
+        <ul class="flex flex-col gap-8 font-mono">
+          {
+            techSkills.map((skill) => {
+              return (
+                <li>
+                  <p class="mb-4 text-sm font-bold uppercase tracking-wider text-dark-3">
+                    {skill.type}
+                  </p>
+                  <ul class="flex flex-wrap gap-2">
+                    {skill.skills.map((skill) => {
+                      return (
+                        <li class="rounded-full bg-primary-500 px-4 py-2 text-sm text-white">
+                          {skill}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </li>
+              );
+            })
+          }
         </ul>
       </div>
       <div class="max-w-md">
