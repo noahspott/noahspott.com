@@ -1,0 +1,24 @@
+---
+import Content from "../components/Content.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Page Not Found - Noah Spott"
+  description="We couldn't locate the page you requested. Visit our homepage or browse our website for more information."
+>
+  <main>
+    <section class="w-80 bg-white py-20">
+      <Content>
+        <div class="flex flex-col items-start gap-4">
+          <h1 class="text-4xl font-black md:text-7xl">Page Not Found</h1>
+
+          <p>
+            <span class="font-bold">Click on the logo</span> in the top left corner
+            to return to the homepage.
+          </p>
+        </div>
+      </Content>
+    </section>
+  </main>
+</Layout>
