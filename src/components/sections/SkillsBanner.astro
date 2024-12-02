@@ -1,0 +1,34 @@
+---
+const skills = [
+  "Responsive Web Design",
+  "Software Engineering",
+  "Web Development",
+  "Collaboration",
+  "Communication",
+  "Algorithms",
+  "Agile",
+  "Testing",
+  "UML",
+  "JavaScript",
+];
+---
+
+<div
+  class="relative overflow-x-clip bg-gradient-to-r from-primary-500 via-primary-100 to-primary-200 py-10"
+>
+  <ul
+    class="absolute -left-10 top-0 z-20 flex h-20 w-[150%] -rotate-1 items-center gap-2 whitespace-nowrap bg-white font-mono text-sm shadow-2xl sm:text-xl"
+  >
+    {
+      skills.map((skill) => {
+        return (
+          <li class="text-primary-200">
+            {"<"}
+            <span class="text-primary-300">{skill}</span>
+            {"/>"}
+          </li>
+        );
+      })
+    }
+  </ul>
+</div>

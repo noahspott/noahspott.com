@@ -60,10 +60,10 @@ const { siteInfo } = Astro.props as FooterProps;
             <ul class="flex flex-col gap-4">
               {
                 siteInfo.phone && (
-                  <li class="flex items-center gap-2 self-start duration-100 hover:text-primary-200">
+                  <li class="flex items-center gap-2 self-start duration-100 hover:opacity-70 focus:opacity-70">
                     <FaPhone />
                     <a
-                      aria-label="Call the Janet Jackson for Judge team."
+                      aria-label="Call Noah Spott"
                       href={`tel:${siteInfo.phone}`}
                     >
                       {siteInfo.phone}
@@ -73,11 +73,11 @@ const { siteInfo } = Astro.props as FooterProps;
               }
               {
                 siteInfo.email && (
-                  <li class="flex items-center gap-2 self-start duration-100 hover:text-primary-200">
+                  <li class="flex items-center gap-2 self-start duration-100 hover:opacity-70 focus:opacity-70">
                     <FaEnvelope />
 
                     <a
-                      aria-label="Email the Janet Jackson for Judge team."
+                      aria-label="Email Noah Spott"
                       href={`mailto:${siteInfo.email}`}
                     >
                       {siteInfo.email}

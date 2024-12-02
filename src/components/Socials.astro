@@ -26,7 +26,7 @@ const { siteInfo, iconClasses, containerClasses } = Astro.props as SocialsProps;
         <a
           aria-label={`Visit the ${siteInfo.name} Facebook Page`}
           href={getUrlFromPlatform("facebook", siteInfo.socials)}
-          class={`text-3xl duration-100 hover:cursor-pointer hover:opacity-70 ${iconClasses}`}
+          class={`text-3xl duration-100 hover:cursor-pointer hover:opacity-70 focus:opacity-70 ${iconClasses}`}
         >
           <FaFacebook />
         </a>
@@ -35,7 +35,7 @@ const { siteInfo, iconClasses, containerClasses } = Astro.props as SocialsProps;
         <a
           aria-label={`Visit the ${siteInfo.name} X Account`}
           href={getUrlFromPlatform("x", siteInfo.socials)}
-          class={`text-3xl duration-100 hover:cursor-pointer hover:opacity-70 ${iconClasses}`}
+          class={`text-3xl duration-100 hover:cursor-pointer hover:opacity-70 focus:opacity-70 ${iconClasses}`}
         >
           <FaXTwitter />
         </a>
@@ -44,7 +44,7 @@ const { siteInfo, iconClasses, containerClasses } = Astro.props as SocialsProps;
         <a
           aria-label={`Visit the ${siteInfo.name} Instagram Page`}
           href={getUrlFromPlatform("instagram", siteInfo.socials)}
-          class={`text-3xl duration-100 hover:cursor-pointer hover:opacity-70 ${iconClasses}`}
+          class={`text-3xl duration-100 hover:cursor-pointer hover:opacity-70 focus:opacity-70 ${iconClasses}`}
         >
           <FaInstagram />
         </a>
@@ -53,7 +53,7 @@ const { siteInfo, iconClasses, containerClasses } = Astro.props as SocialsProps;
         <a
           aria-label={`Visit the ${siteInfo.name} Github Page`}
           href={getUrlFromPlatform("github", siteInfo.socials)}
-          class={`text-3xl duration-100 hover:cursor-pointer hover:opacity-70 ${iconClasses}`}
+          class={`text-3xl duration-100 hover:cursor-pointer hover:opacity-70 focus:opacity-70 ${iconClasses}`}
         >
           <FaGithub />
         </a>
@@ -62,7 +62,7 @@ const { siteInfo, iconClasses, containerClasses } = Astro.props as SocialsProps;
         <a
           aria-label={`Visit the ${siteInfo.name} Linkedin Page`}
           href={getUrlFromPlatform("linkedin", siteInfo.socials)}
-          class={`text-3xl duration-100 hover:cursor-pointer hover:opacity-70 ${iconClasses}`}
+          class={`text-3xl duration-100 hover:cursor-pointer hover:opacity-70 focus:opacity-70 ${iconClasses}`}
         >
           <FaLinkedin />
         </a>

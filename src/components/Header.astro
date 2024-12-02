@@ -38,17 +38,14 @@ const {
               <FaEnvelope />
               <a
                 href={`mailto:${siteInfo.email}`}
-                aria-label="Email the Janet Jackson for Judge team."
+                aria-label="Email Noah Spott"
               >
                 {siteInfo.email}
               </a>
             </div>
             <div class="flex items-center gap-2">
               <FaPhone />
-              <a
-                href={`tel:${siteInfo.phone}`}
-                aria-label="Call the Janet Jackson for Judge team."
-              >
+              <a href={`tel:${siteInfo.phone}`} aria-label="Call Noah Spott">
                 {siteInfo.phone}
               </a>
             </div>
@@ -65,7 +62,7 @@ const {
         <a
           href="/"
           aria-label="Navigate to home page"
-          class={`${nameStyles} duration-100 hover:scale-[1.02] max-w-32 sm:max-w-52`}
+          class={`${nameStyles} duration-100 hover:scale-[1.02] focus:scale-[1.02] max-w-32 sm:max-w-52`}
           >{
             siteInfo.logo ? (
               <img
@@ -100,7 +97,7 @@ const {
                     >
                       <a
                         aria-label={`Go to the ${item.display} page`}
-                        class={`${menuItemStyles} transition-all duration-100 hover:text-primary-500`}
+                        class={`${menuItemStyles} transition-all duration-100 hover:text-primary-500 focus:text-primary-500`}
                         href={item.href}
                       >
                         {item.display}

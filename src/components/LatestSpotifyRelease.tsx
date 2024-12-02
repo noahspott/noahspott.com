@@ -56,7 +56,11 @@ export default function LatestSpotifyRelease() {
               href={getSpotifyUrl(latestAlbum)}
               className="animate-fadeIn duration-100 hover:opacity-70"
             >
-              <img src={getArtwork(latestAlbum)} alt="" className="w-full" />
+              <img
+                src={getArtwork(latestAlbum)}
+                alt="Latest ivoryHAUS release artwork"
+                className="w-full"
+              />
             </a>
           )}
         </div>
@@ -68,7 +72,7 @@ export default function LatestSpotifyRelease() {
         {!isFetched && (
           <button
             onClick={handleButtonClick}
-            className={`flex items-center justify-center gap-4 bg-spotify-500 p-4 font-black uppercase tracking-wider text-white duration-100 hover:opacity-70 disabled:line-through disabled:opacity-50 disabled:hover:scale-100 ${isFetching && "animate-pulse"} `}
+            className={`flex items-center justify-center gap-4 bg-spotify-500 p-4 font-black uppercase tracking-wider text-white duration-100 hover:opacity-70 focus:opacity-70 disabled:line-through disabled:opacity-50 disabled:hover:scale-100 ${isFetching && "animate-pulse"} `}
           >
             {getButtonMessage(isFetching, isFetched)}
             <FaSpotify />
