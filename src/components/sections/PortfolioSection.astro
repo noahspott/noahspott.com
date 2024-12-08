@@ -3,6 +3,7 @@ import Content from "../Content.astro";
 import { Image } from "astro:assets";
 import { FaArrowRight } from "react-icons/fa";
 
+import job from "../../images/jobhorizon-website.png";
 import cash from "../../images/cash-website.png";
 import sal from "../../images/sal-website.png";
 import jacksonlaw from "../../images/jacksonlaw-website.png";
@@ -11,6 +12,20 @@ import summitave from "../../images/summitave-website.png";
 import judgejackson from "../../images/judgejackson-website.png";
 
 const portfolioItems = [
+  {
+    title: "Job Horizon",
+    description:
+      "Job seekers struggle with tailoring their resumes and preparing for interviews in an increasingly competitive market. I designed and developed this Next.js app that uses Anthropic's LLM, Claude, to automatically generate personalized resumes and cover letters. ",
+    tools: [
+      "TypeScript",
+      "React w/ Next.js",
+      "Anthropic Messages API",
+      "Supabase Auth and Database",
+      "Vercel",
+    ],
+    src: job,
+    href: "https://job-horizon.vercel.app/",
+  },
   {
     title: "Cash for Diabetic Strips",
     description:

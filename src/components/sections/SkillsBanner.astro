@@ -14,21 +14,39 @@ const skills = [
 ---
 
 <div
-  class="relative overflow-x-clip bg-gradient-to-r from-primary-500 via-primary-100 to-primary-200 py-10"
+  class="relative overflow-x-clip bg-gradient-to-r from-primary-500 via-primary-100 to-primary-200 py-5 sm:py-10"
 >
-  <ul
-    class="absolute -left-10 top-0 z-20 flex h-20 w-[150%] -rotate-1 items-center gap-2 whitespace-nowrap bg-white font-mono text-sm shadow-2xl sm:text-xl"
+  <div
+    class="absolute -left-10 top-0 z-20 flex h-10 w-[150%] -rotate-1 items-center justify-center bg-white shadow-2xl sm:h-20"
   >
-    {
-      skills.map((skill) => {
-        return (
+    <ul
+      class="animate-carousel flex items-center justify-center gap-2 whitespace-nowrap font-mono text-sm sm:text-xl"
+    >
+      {
+        // Double the skills array to create seamless loop
+        [...skills, ...skills].map((skill) => (
           <li class="text-primary-200">
             {"<"}
             <span class="text-primary-300">{skill}</span>
             {"/>"}
           </li>
-        );
-      })
-    }
-  </ul>
+        ))
+      }
+    </ul>
+  </div>
 </div>
+
+<style>
+  @keyframes carousel {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-carousel {
+    animation: carousel 30s linear infinite;
+  }
+</style>
