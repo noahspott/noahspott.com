@@ -18,7 +18,10 @@ const signatureDark = "/signature-dark.png";
 
 const siteInfo = {
   name: siteName,
-  logo: signatureDark,
+  logo: {
+    light: signatureLight,
+    dark: signatureDark,
+  },
   phone: "+1 (570) 243-1651",
   email: "noahspottdev@gmail.com",
   location: "Pocono Summit, PA",
@@ -118,3 +121,17 @@ const siteInfo = {
       monospace;
   }
 </style>
+
+<script>
+  // Check for saved user preference, either in localStorage or system preference
+  const userTheme = localStorage.getItem("theme");
+  const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
+
+  // Set theme to dark if user has explicitly chosen dark mode
+  // or hasn't made a choice but their system prefers dark mode
+  if (userTheme === "dark" || (!userTheme && systemTheme === "dark")) {
+    document.documentElement.classList.add("dark");
+  }
+</script>

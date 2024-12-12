@@ -1,0 +1,34 @@
+/* Set dark mode as default */
+.ai-response {
+  background-color: #1a1b26;
+  border-left: 4px solid #9d8cff;
+  border-radius: 4px;
+  margin: 1.5rem 0;
+  padding: 1rem 1.5rem;
+  position: relative;
+}
+
+.ai-response::before {
+  content: "AI";
+  position: absolute;
+  top: -12px;
+  left: -4px;
+  background: #9d8cff;
+  color: white;
+  padding: 2px 8px;
+  font-size: 0.8rem;
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+/* Light mode styles */
+@media (prefers-color-scheme: light) {
+  .ai-response {
+    background-color: #f8f9fa;
+    border-left-color: #5436da;
+  }
+
+  .ai-response::before {
+    background: #5436da;
+  }
+}

@@ -1,0 +1,124 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import Content from "../../components/Content.astro";
+
+// Get all blog posts
+const posts = await getCollection("blog");
+---
+
+<Layout title="Blog" description="My blog posts">
+  <main class="min-h-screen bg-gradient-to-br from-blue-50 to-pink-50">
+    <section class="py-20">
+      <Content>
+        <div class="mb-12 text-center">
+          <h1
+            class="mb-4 bg-gradient-to-r from-primary-500 via-primary-400 to-primary-600 bg-clip-text pb-1 text-5xl font-bold text-transparent"
+            id="blog-title"
+          >
+            <span class="typing-cursor">|</span>
+          </h1>
+          <p class="mx-auto max-w-2xl text-lg text-gray-600">
+            Thoughts, ideas, and discoveries about web development, design, and
+            technology
+          </p>
+        </div>
+        <ul class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {
+            posts.map((post) => (
+              <li>
+                <a
+                  href={`/blog/${post.slug}`}
+                  class="block rounded-xl border border-white/30 bg-white/30 p-6 shadow-xl backdrop-blur-lg transition-shadow duration-300 hover:scale-[1.02] hover:shadow-2xl"
+                >
+                  <h2 class="mb-2 text-xl font-semibold">{post.data.title}</h2>
+                  {post.data.description && (
+                    <p class="text-gray-600">{post.data.description}</p>
+                  )}
+                  {post.data.tags && (
+                    <div class="mt-3 flex flex-wrap gap-2">
+                      {post.data.tags.map((tag) => (
+                        <span class="rounded-full bg-primary-100 px-3 py-1 text-sm text-primary-800">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                  <div class="mt-4 text-sm text-gray-500">
+                    {post.data.date?.toLocaleDateString()}
+                  </div>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </Content>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .typing-cursor {
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink {
+    from,
+    to {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+</style>
+
+<script>
+  const phrases = [
+    "render(Thoughts)",
+    "await thoughts.render()",
+    "render.thoughts()",
+    "Render.thoughts.compile()",
+    "Render Thoughts",
+  ];
+
+  function sleep(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  async function typePhrase(phrase: string, element: HTMLElement) {
+    let text = "";
+    for (let char of phrase) {
+      text += char;
+      element.textContent = text + "|";
+      await sleep(100);
+    }
+    await sleep(2000);
+  }
+
+  async function deletePhrase(element: HTMLElement) {
+    let text = element.textContent?.slice(0, -1) ?? "";
+    while (text.length > 0) {
+      text = text.slice(0, -1);
+      element.textContent = text + "|";
+      await sleep(50);
+    }
+    await sleep(500);
+  }
+
+  async function animateTitle() {
+    const titleElement = document.getElementById("blog-title");
+    let currentIndex = 0;
+
+    while (true) {
+      if (titleElement) {
+        await typePhrase(phrases[currentIndex], titleElement);
+        await deletePhrase(titleElement);
+        currentIndex = (currentIndex + 1) % phrases.length;
+      }
+    }
+  }
+
+  // Start the animation when the page loads
+  document.addEventListener("DOMContentLoaded", animateTitle);
+</script>

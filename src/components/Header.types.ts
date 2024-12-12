@@ -16,7 +16,10 @@ export interface SocialMedia {
 }
 
 export interface SiteInfo {
-  logo?: string;
+  logo?: {
+    light: string;
+    dark: string;
+  };
   name: string;
   phone: string;
   email: string;
@@ -34,4 +37,8 @@ export interface HeaderProps {
   contactHeaderStyles?: string;
   containerStyles?: string;
   hasSocialNav?: boolean;
+  bgLight?: string;
+  bgDark?: string;
+  textLight?: string;
+  textDark?: string;
 }

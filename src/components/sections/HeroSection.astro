@@ -1,65 +1,134 @@
 ---
 import Content from "../Content.astro";
 import { Image } from "astro:assets";
+import {
+  FaReact,
+  FaNodeJs,
+  FaPython,
+  FaHtml5,
+  FaCss3Alt,
+} from "react-icons/fa";
+import {
+  SiTypescript,
+  SiTailwindcss,
+  SiFlask,
+  SiPostman,
+  SiNextdotjs,
+  SiAstro,
+} from "react-icons/si";
 
 import noahPhoto from "../../images/noah-headshot-cropped.jpg";
 
 const techSkills = [
   {
     type: "Frontend",
-    skills: ["React", "JavaScript", "Typescript", "HTML", "CSS", "Tailwind"],
+    skills: [
+      { name: "React", icon: FaReact },
+      { name: "JavaScript", icon: SiTypescript },
+      { name: "TypeScript", icon: SiTypescript },
+      { name: "HTML", icon: FaHtml5 },
+      { name: "CSS", icon: FaCss3Alt },
+      { name: "Tailwind", icon: SiTailwindcss },
+    ],
   },
   {
     type: "Backend",
-    skills: ["Node.js", "Python", "Flask", "REST", "CRUD"],
+    skills: [
+      { name: "Node.js", icon: FaNodeJs },
+      { name: "Python", icon: FaPython },
+      { name: "Flask", icon: SiFlask },
+      { name: "REST", icon: SiPostman },
+    ],
   },
   {
     type: "Fullstack",
-    skills: ["Next.js", "Astro"],
+    skills: [
+      { name: "Next.js", icon: SiNextdotjs },
+      { name: "Astro", icon: SiAstro },
+    ],
   },
 ];
 ---
 
-<section class="bg-white py-20">
+<section class="relative overflow-hidden bg-white py-20">
+  {/* Gradient overlay */}
+  <div
+    class="absolute inset-0 z-10 bg-gradient-to-br from-blue-50/20 via-white to-primary-100/30"
+  >
+  </div>
+
+  {/* Grid pattern */}
+  <div
+    class="absolute inset-0 z-20"
+    style="background-image: linear-gradient(to right, #94a3b8 1px, transparent 1px), linear-gradient(to bottom, #94a3b8 1px, transparent 1px); 
+    background-size: 2rem 2rem;
+    opacity: 0.10;"
+  >
+  </div>
+
   <Content>
     <div
-      class="grid grid-cols-1 place-items-center gap-16 sm:grid-cols-2 md:gap-4"
+      class="relative z-30 grid grid-cols-1 place-items-center gap-16 sm:grid-cols-2 md:gap-4"
     >
-      <div class="order-last sm:order-first">
-        <h1
-          class="mb-2 bg-gradient-to-r from-primary-500 via-primary-400 to-primary-600 bg-clip-text font-mono text-4xl font-black text-transparent md:text-7xl"
-        >
-          Noah Spott
-        </h1>
-        <p
-          class="mb-8 font-mono text-xl uppercase tracking-wider text-dark-3 md:text-2xl"
-        >
-          Software Engineer
-        </p>
-        <h2 class="mb-2 text-2xl font-black">Tech Skills</h2>
-        <ul class="flex flex-col gap-4">
-          {
-            techSkills.map((skill) => {
-              return (
-                <li class="flex flex-col">
-                  <p class="mb-2 self-start text-sm font-bold uppercase tracking-wider text-dark-3">
-                    {skill.type}
-                  </p>
-                  <ul class="flex flex-wrap gap-2">
-                    {skill.skills.map((tech) => {
-                      return (
-                        <li class="rounded-full border bg-primary-500 px-4 py-2 font-mono text-sm text-white">
-                          {tech}
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </li>
-              );
-            })
-          }
-        </ul>
+      <div class="order-last space-y-12 sm:order-first">
+        {/* Hero Text */}
+        <div class="space-y-4">
+          <h1 class="font-mono text-4xl font-black md:text-7xl">
+            <span
+              class="bg-gradient-to-r from-primary-500 via-primary-400 to-primary-600 bg-clip-text text-transparent"
+            >
+              Noah Spott
+            </span>
+          </h1>
+          <p class="font-mono text-lg text-dark-3/80 md:text-xl">
+            Software Engineer building modern web applications
+          </p>
+          <a
+            href="mailto:noahspottdev@gmail.com"
+            class="group relative inline-flex items-center gap-2 overflow-hidden rounded-lg bg-primary-500 px-6 py-3 font-medium text-white transition-all hover:bg-primary-600"
+          >
+            <span class="relative z-10">Let's Connect</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="relative z-10 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                clip-rule="evenodd"></path>
+            </svg>
+            <div
+              class="absolute inset-0 -translate-x-full bg-primary-600 transition-transform duration-300 group-hover:translate-x-0"
+            >
+            </div>
+          </a>
+        </div>
+
+        {/* Tech Stack - Horizontal Scroll */}
+        <div class="space-y-3">
+          <p class="text-sm font-medium text-dark-3/70">Tech Stack</p>
+          <div class="flex flex-wrap gap-3 overflow-x-auto pb-4">
+            {
+              [
+                SiNextdotjs,
+                FaReact,
+                SiTypescript,
+                SiTailwindcss,
+                FaNodeJs,
+                FaPython,
+                SiAstro,
+              ].map((Icon, i) => (
+                <div class="flex h-12 w-12 flex-none items-center justify-center rounded-xl bg-primary-50/50 p-2.5 transition-all hover:bg-primary-100/80">
+                  <Icon className="h-6 w-6 text-primary-600" />
+                </div>
+              ))
+            }
+          </div>
+        </div>
       </div>
+
       <div class="max-w-md">
         <Image
           src={noahPhoto}
