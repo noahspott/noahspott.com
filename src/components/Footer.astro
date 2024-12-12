@@ -25,7 +25,7 @@ const { siteInfo } = Astro.props as FooterProps;
               siteInfo.logo ? (
                 <img
                   class="max-w-52"
-                  src={siteInfo.logo}
+                  src={siteInfo.logo.light}
                   alt={`${siteInfo.name} logo`}
                 />
               ) : (
