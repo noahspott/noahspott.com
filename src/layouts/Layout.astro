@@ -94,7 +94,12 @@ const siteInfo = {
     </Header>
     <NavPusher />
     <slot />
-    <Footer siteInfo={{ ...siteInfo, logo: signatureLight }} />
+    <Footer
+      siteInfo={{
+        ...siteInfo,
+        logo: { light: signatureLight, dark: signatureDark },
+      }}
+    />
   </body>
 </html>
 <style is:global>
